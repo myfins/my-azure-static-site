@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f6f8fa;
+}
+
+header {
+  background-color: #0078d4;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #24292f;
+  color: white;
+  padding-top: 1em;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 0.8em;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar a:hover {
+  background-color: #0366d6;
+}
+
+main {
+  flex: 1;
+  padding: 1.5em;
+}

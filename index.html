@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to My Azure Site</title>
+  <meta charset="UTF-8">
+  <title>Analytics Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Hello from Sharad’s Azure Website!</h1>
-<p>Updated on 6 Nov 2025 🎉</p>
+  <header>
+    <h1>📊 Analytics Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#" onclick="loadData('sales')">Sales</a></li>
+        <li><a href="#" onclick="loadData('traffic')">Traffic</a></li>
+        <li><a href="#" onclick="loadData('users')">Users</a></li>
+      </ul>
+    </aside>
+
+    <main id="content">
+      <h2>Welcome</h2>
+      <p>Select a metric to load data.</p>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
