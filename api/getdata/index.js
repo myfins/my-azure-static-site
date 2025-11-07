@@ -35,4 +35,4 @@ module.exports = async function (context, req) {
     };
   }
 };
-//redeploy
+context.log("Function redeploy test");
