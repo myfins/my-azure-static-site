@@ -1,0 +1,9 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Azure Functions API for dashboard",
+  "main": "index.js",
+  "dependencies": {
+    "@azure/cosmos": "^4.0.0"
+  }
+}
