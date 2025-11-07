@@ -1,11 +1,14 @@
 const { CosmosClient } = require("@azure/cosmos");
 
-const endpoint = process.env.COSMOS_DB_ENDPOINT;
-const key = process.env.COSMOS_DB_KEY;
-const databaseId = "AnalyticsDB";
-const containerId = "Metrics";
+// Azure injects the connection string automatically after linking the DB
+const connectionString = process.env.AZURE_COSMOSDB_CONNECTION_STRING;
 
-const client = new CosmosClient({ endpoint, key });
+// Create Cosmos DB client from connection string
+const client = new CosmosClient(connectionString);
+
+// These must match the database and container names you selected
+const databaseId = "analyticsdb";
+const containerId = "metrics";
 
 module.exports = async function (context, req) {
   const type = req.query.type || "sales";
@@ -15,11 +18,16 @@ module.exports = async function (context, req) {
     const container = database.container(containerId);
 
     const { resources } = await container.items
-      .query(`SELECT * FROM c WHERE c.type = @type`, { parameters: [{ name: "@type", value: type }] })
+      .query(`SELECT * FROM c WHERE c.type = @type`, {
+        parameters: [{ name: "@type", value: type }]
+      })
       .fetchAll();
 
-    context.res = { body: resources };
+    context.res = { status: 200, body: resources };
   } catch (err) {
-    context.res = { status: 500, body: `Error: ${err.message}` };
+    context.res = {
+      status: 500,
+      body: `Error accessing Cosmos DB: ${err.message}`
+    };
   }
 };
